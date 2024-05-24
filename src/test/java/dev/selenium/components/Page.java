@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public abstract class Page extends Component {
 
@@ -48,6 +49,18 @@ public abstract class Page extends Component {
     public WebElement getLocatedElement(String xpathString, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         return wait.until(d -> driver.findElement(By.xpath(xpathString)));
+    }
+
+    public static void switchToNewTab() {
+        String originalWindow = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for(String windowHandle : allWindows) {
+            if(!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
     }
 
     protected File getTempDirectory(String prefix) {

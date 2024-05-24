@@ -18,7 +18,7 @@ public class LoginPage extends Page {
     @Override
     public void getTitle() {
         String title = driver.getTitle();
-        Assert.assertEquals("Login", title);
+        Assert.assertEquals(title, "Login");
     }
 
     @Override
@@ -42,7 +42,7 @@ public class LoginPage extends Page {
     public void assertAlert(String expected) {
         var alert = getAlertIsPresent();
         threadSleep(2000); //Give time to see the message
-        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: " + expected);
+        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: " + expected); //TODO: Fix formatting
         alert.accept();
     }
 

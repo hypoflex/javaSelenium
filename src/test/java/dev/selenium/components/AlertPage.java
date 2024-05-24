@@ -10,8 +10,8 @@ public class AlertPage extends Page {
 
     public static final By defaultAlert = By.xpath("//p/a[@id='alert']");
     public static final By emptyAlert = By.xpath("//p/a[@id='empty-alert']");
-    // NOTE: We could define each prompt, but instead we could also make a dynamic xpath
-    // See 'genericDivWithId' and 'genericAHrefLink'
+    //? NOTE: We could define each prompt, but instead we could also make a dynamic xpath
+    //? See 'genericDivWithId' and 'genericAHrefLink'
     public static final By promptAlert = By.xpath("//p/a[@id='prompt']");
     public static final By promptValueAlert = By.xpath("//p/a[@id='prompt-with-default']");
     public static final By doublePromptAlert = By.xpath("//p/a[@id='double-prompt']"); // not needed?
@@ -25,7 +25,7 @@ public class AlertPage extends Page {
     public static final By dropdownBox = By.xpath("");
     public static final By textBox = By.xpath("");
 
-    //NOTE: in order to have a dynamic xpath we parse in a parameter to dynamically define the ID
+    //? NOTE: in order to have a dynamic xpath we parse in a parameter to dynamically define the ID
     public static final String genericDivWithId = "//div[@id='%s']";
     public static final String genericAHrefLinkWithId = "//p/a[@id='%s']";
 
@@ -37,7 +37,7 @@ public class AlertPage extends Page {
     @Override
     public void getTitle() {
         String title = driver.getTitle();
-        Assert.assertEquals("Testing Alerts", title);
+        Assert.assertEquals(title, "Testing Alerts");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class AlertPage extends Page {
     public AlertPage assertAlert(String expected) {
         Alert alert = getAlertIsPresent();
         threadSleep(2000); //Give user time to see the message
-        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: " + expected);
+        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: '" + expected + "' but received '" + getAlertText(alert) + "'"); //TODO: fix formatting
         return this;
     }
 

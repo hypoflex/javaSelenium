@@ -9,9 +9,9 @@ public class SetupTest {
 
     protected WebDriver driver;
 
-    // For testing purpose we Start and Stop the driver for each method.
-    // This is done due to the tests being relatively small.
-    // This setup also allows to very quickly run each test is Parallel
+    //? For testing purpose we Start and Stop the driver for each method.
+    //? This is done due to the tests being relatively small.
+    //? This setup also allows to very quickly run each test is Parallel
     @BeforeMethod
     public void setupDriver() throws Exception {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
@@ -24,8 +24,8 @@ public class SetupTest {
         }
     }
 
-    // A helper class to dynamically create pages that extend the 'Page Class'
-    // This removes the purpose of having to navigate through the homepage first each time.
+    //? A helper class to dynamically create pages that extend the 'Page Class'
+    //? This removes the purpose of having to navigate through the homepage first each time.
     public <T extends Page> T openWebpage(String pageName, Class<T> pageClass) {
         driver.get(String.format("https://www.selenium.dev/selenium/web/%s.html", pageName));
         try {

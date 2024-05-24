@@ -14,7 +14,7 @@ public class HomePage extends Page {
     @Override
     public void getTitle() {
         String title = driver.getTitle();
-        Assert.assertEquals("Index of Available Pages", title);
+        Assert.assertEquals(title, "Index of Available Pages");
     }
 
     @Override

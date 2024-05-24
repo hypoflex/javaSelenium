@@ -4,6 +4,8 @@ import dev.selenium.SetupTest;
 import dev.selenium.components.AlertPage;
 import org.testng.annotations.Test;
 
+import static dev.selenium.components.Page.threadSleep;
+
 public class AlertTest extends SetupTest {
 
     AlertPage alertPage;
@@ -44,9 +46,10 @@ public class AlertTest extends SetupTest {
         var prompt1 = "This is prompt 1";
         var prompt2 = "This is prompt 2";
 
-        alertPage.clickAHrefWithId("prompt-with-default");
-        alertPage.assertAlert("First").setPromptAlertInput(prompt1);
-        alertPage.assertAlert("Second").setPromptAlertInput(prompt2);
+        alertPage.clickAHrefWithId("double-prompt");
+        alertPage.assertAlert("First").setPromptAlertInput(prompt1).acceptAlert();
+        threadSleep(2000);
+        alertPage.assertAlert("Second").setPromptAlertInput(prompt2).acceptAlert();
 
         alertPage.assertPromptAlertInputResult("text1", prompt1);
         alertPage.assertPromptAlertInputResult("text2", prompt2);
@@ -72,7 +75,8 @@ public class AlertTest extends SetupTest {
 
     @Test
     public void newWindowAlertTest() {
-
+        alertPage = openWebpage();
+        alertPage.clickAHrefWithId("open-window-with-onload-alert").assertAlert("onload").acceptAlert();
     }
 
     @Test

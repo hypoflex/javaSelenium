@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class Component {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     protected Component(WebDriver driver) {
-        this.driver = driver;
+        Component.driver = driver;
     }
 }
