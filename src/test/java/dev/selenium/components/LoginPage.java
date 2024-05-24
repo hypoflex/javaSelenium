@@ -1,6 +1,7 @@
 package dev.selenium.components;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 public class LoginPage extends Page {
@@ -22,6 +23,7 @@ public class LoginPage extends Page {
 
     @Override
     public void isLoaded() {
+        getTitle();
         getLocatedElement(loginForm);
     }
 
@@ -35,5 +37,20 @@ public class LoginPage extends Page {
 
     public void submitForm() {
         getLocatedElement(loginSubmit).click();
+    }
+
+    public void assertAlert(String expected) {
+        var alert = getAlertIsPresent();
+        threadSleep(2000); //Give time to see the message
+        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: " + expected);
+        alert.accept();
+    }
+
+    private Alert getAlertIsPresent() {
+        return driverWait().until(ExpectedConditions.alertIsPresent());
+    }
+
+    private String getAlertText(Alert alert) {
+        return alert.getText();
     }
 }

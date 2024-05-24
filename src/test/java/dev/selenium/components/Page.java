@@ -1,10 +1,9 @@
 package dev.selenium.components;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -24,6 +23,7 @@ public abstract class Page extends Component {
     protected File browserPath;
 
     public abstract void getTitle();
+
     public abstract void isLoaded();
 
     private static final Random rand = new Random();
@@ -38,6 +38,16 @@ public abstract class Page extends Component {
     public WebElement getLocatedElement(By by, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         return wait.until(d -> driver.findElement(by));
+    }
+
+    public WebElement getLocatedElement(String xpathString) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        return wait.until(d -> driver.findElement(By.xpath(xpathString)));
+    }
+
+    public WebElement getLocatedElement(String xpathString, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        return wait.until(d -> driver.findElement(By.xpath(xpathString)));
     }
 
     protected File getTempDirectory(String prefix) {
@@ -88,6 +98,7 @@ public abstract class Page extends Component {
         int min = 1;
         return rand.nextInt((max - min) + 1) + min;
     }
+
     public int randomNumberGenerator(String byXpathString) {
         int max = driver.findElements(By.xpath(byXpathString)).size();
         int min = 1;

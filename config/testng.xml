@@ -1,8 +1,18 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="ExampleSuite">
-    <test name="ExampleTest">
-        <classes>
-            <class name="dev.selenium.MainTest" />
-        </classes>
+<suite name="javaSelenium">
+    <test name="dev.selenium.tests.positive">
+        <packages>
+            <package name="dev.selenium.tests.positive" />
+        </packages>
+    </test>
+    <test name="dev.selenium.tests.negative">
+        <packages>
+            <package name="dev.selenium.tests.negative" />
+        </packages>
+    </test>
+    <test name="dev.selenium.tests">
+        <packages>
+            <package name="dev.selenium.tests" />
+        </packages>
     </test>
 </suite>
