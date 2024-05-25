@@ -4,7 +4,7 @@ import dev.selenium.SetupTest;
 import dev.selenium.components.FormPage;
 import org.testng.annotations.Test;
 
-public class formPageTest extends SetupTest {
+public class FormPageTest extends SetupTest {
 
     FormPage formPage;
     public FormPage openWebpage() {
