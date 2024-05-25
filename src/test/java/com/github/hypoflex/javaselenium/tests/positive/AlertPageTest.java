@@ -1,10 +1,10 @@
-package dev.selenium.tests.positive;
+package com.github.hypoflex.javaselenium.tests.positive;
 
-import dev.selenium.SetupTest;
-import dev.selenium.components.AlertPage;
+import com.github.hypoflex.javaselenium.SetupTest;
+import com.github.hypoflex.javaselenium.components.AlertPage;
 import org.testng.annotations.Test;
 
-import static dev.selenium.components.Page.threadSleep;
+import static com.github.hypoflex.javaselenium.components.Page.threadSleep;
 
 public class AlertPageTest extends SetupTest {
 

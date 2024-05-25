@@ -1,12 +1,12 @@
-package dev.selenium.tests;
+package com.github.hypoflex.javaselenium.tests;
 
-import dev.selenium.SetupTest;
-import dev.selenium.components.*;
+import com.github.hypoflex.javaselenium.SetupTest;
+import com.github.hypoflex.javaselenium.components.*;
 import org.testng.annotations.*;
 
 
 //? This class is for development purpose only, see package:
-//? dev.selenium.tests.positive or .negative instead
+//? com.github.hypoflex.javaselenium.tests.positive or .negative instead
 public class MainTest extends SetupTest {
 
     AlertPage alertPage;

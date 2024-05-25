@@ -1,7 +1,7 @@
-package dev.selenium;
+package com.github.hypoflex.javaselenium;
 
-import dev.selenium.components.Page;
-import dev.selenium.components.exceptions.PageObjectCreationException;
+import com.github.hypoflex.javaselenium.components.Page;
+import com.github.hypoflex.javaselenium.components.exceptions.PageObjectCreationException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;

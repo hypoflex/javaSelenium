@@ -1,6 +1,6 @@
-package dev.selenium.components;
+package com.github.hypoflex.javaselenium.components;
 
-import dev.selenium.Config;
+import com.github.hypoflex.javaselenium.Config;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;

@@ -1,18 +1,18 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="javaSelenium">
-    <test name="dev.selenium.tests.positive">
+    <test name="com.github.hypoflex.javaselenium.tests.positive">
         <packages>
-            <package name="dev.selenium.tests.positive" />
+            <package name="com.github.hypoflex.javaselenium.tests.positive" />
         </packages>
     </test>
-    <test name="dev.selenium.tests.negative">
+    <test name="com.github.hypoflex.javaselenium.tests.negative">
         <packages>
-            <package name="dev.selenium.tests.negative" />
+            <package name="com.github.hypoflex.javaselenium.tests.negative" />
         </packages>
     </test>
-    <test name="dev.selenium.tests">
+    <test name="com.github.hypoflex.javaselenium.tests">
         <packages>
-            <package name="dev.selenium.tests" />
+            <package name="com.github.hypoflex.javaselenium.tests" />
         </packages>
     </test>
 </suite>

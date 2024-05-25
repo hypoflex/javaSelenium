@@ -1,4 +1,4 @@
-package dev.selenium;
+package com.github.hypoflex.javaselenium;
 
 public class Config {
 

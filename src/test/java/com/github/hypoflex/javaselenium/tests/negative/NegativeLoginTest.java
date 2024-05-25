@@ -1,8 +1,8 @@
-package dev.selenium.tests.negative;
+package com.github.hypoflex.javaselenium.tests.negative;
 
-import dev.selenium.Config;
-import dev.selenium.SetupTest;
-import dev.selenium.components.LoginPage;
+import com.github.hypoflex.javaselenium.Config;
+import com.github.hypoflex.javaselenium.SetupTest;
+import com.github.hypoflex.javaselenium.components.LoginPage;
 import org.testng.annotations.Test;
 
 public class NegativeLoginTest extends SetupTest {

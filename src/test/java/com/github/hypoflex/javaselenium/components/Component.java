@@ -1,4 +1,4 @@
-package dev.selenium.components;
+package com.github.hypoflex.javaselenium.components;
 
 import org.openqa.selenium.WebDriver;
 
