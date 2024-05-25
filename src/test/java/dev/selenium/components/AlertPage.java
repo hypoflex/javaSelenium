@@ -33,6 +33,7 @@ public class AlertPage extends Page {
 
     public AlertPage(WebDriver driver) {
         super(driver);
+        isLoaded();
     }
 
     @Override

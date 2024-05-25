@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static dev.selenium.components.Page.threadSleep;
 
-public class AlertTest extends SetupTest {
+public class AlertPageTest extends SetupTest {
 
     AlertPage alertPage;
     public AlertPage openWebpage() {
