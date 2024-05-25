@@ -13,6 +13,7 @@ public class WithOnloadPage extends Page {
 
     public WithOnloadPage(WebDriver driver) {
         super(driver);
+        isLoaded();
     }
 
     @Override

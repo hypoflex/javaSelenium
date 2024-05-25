@@ -15,6 +15,7 @@ public class LoginPage extends Page {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        isLoaded();
     }
 
     @Override

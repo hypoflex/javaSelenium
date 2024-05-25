@@ -9,6 +9,7 @@ public class HomePage extends Page {
 
     public HomePage(WebDriver driver) {
         super(driver);
+        isLoaded();
     }
 
     @Override
@@ -20,7 +21,7 @@ public class HomePage extends Page {
 
     @Override
     public void isLoaded() {
-        //Coming soon
+        getTitle();
     }
 
 }
