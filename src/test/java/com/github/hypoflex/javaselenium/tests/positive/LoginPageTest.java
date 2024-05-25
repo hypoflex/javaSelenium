@@ -5,7 +5,7 @@ import com.github.hypoflex.javaselenium.SetupTest;
 import com.github.hypoflex.javaselenium.components.LoginPage;
 import org.testng.annotations.Test;
 
-public class PositiveLoginTest extends SetupTest {
+public class LoginPageTest extends SetupTest {
 
     @Test
     public void loginPageTest() {

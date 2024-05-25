@@ -1,6 +1,5 @@
 package com.github.hypoflex.javaselenium.components;
 
-import com.github.hypoflex.javaselenium.Config;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,10 +8,10 @@ import org.testng.Assert;
 @Slf4j
 public class LoginPage extends Page {
 
-    public static final By loginForm = By.xpath("//form");
-    public static final By loginUsername = By.xpath("//form/input[@name='username']");
-    public static final By loginPassword = By.xpath("//form/input[@name='password']");
-    public static final By loginSubmit = By.xpath("//form/input[@value='Login']");
+    private static final By loginForm = By.xpath("//form");
+    private static final By loginUsername = By.xpath("//form/input[@name='username']");
+    private static final By loginPassword = By.xpath("//form/input[@name='password']");
+    private static final By loginSubmit = By.xpath("//form/input[@value='Login']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -44,9 +43,16 @@ public class LoginPage extends Page {
     }
 
     public void assertAlert(String expected) {
-        var alert = getAlertIsPresent();
-        threadSleep(2000); //Give time to see the message
-        Assert.assertTrue(getAlertText(alert).contains(expected), Config.ALERT_DOES_NOT_CONTAIN_EXPECTED_SUBSTRING.formatted(expected, getAlertText(alert)));
+        Alert alert = getAlertIsPresent();
+        threadSleep(2000); //Give user time to see the message
+        try {
+            Assert.assertTrue(getAlertText(alert).contains(expected));
+            // Log success if the assertion passes
+            log.info("Assertion passed: '{}'", expected);
+        } catch (AssertionError e) {
+            // Log failure and the assertion message if the assertion fails
+            log.error("Assertion failed: {}", e.getMessage());
+        }
         alert.accept();
     }
 

@@ -61,12 +61,18 @@ public class AlertPageTest extends SetupTest {
         alertPage.clickAHrefWithId("slow-alert").assertAlert("Slow").acceptAlert();
     }
 
-    @Test //TODO: Also accept and redirect
+    //TODO::
+    @Test
+    //! This is a problem, because the confirm alert returns a new page.
+    //! ideally a custom method should be made for this.
+    //? for correct implementation of redirects, see:
+    /**{@link FormPageTest#loginFormTest()} */
     public void confirmAlertTest() {
         alertPage = openWebpage();
         alertPage.clickAHrefWithId("confirm").dismissAlert();
     }
 
+    //TODO::
     @Test
     public void newPageAlertTest() {
         alertPage = openWebpage();

@@ -8,7 +8,7 @@ import org.testng.Assert;
 @Slf4j
 public class ResultPage extends Page {
 
-    public static final By paragraphText = By.xpath("//p[@id='greetings'");
+    public static final By paragraphText = By.xpath("//p[@id='greeting']");
 
     protected ResultPage(WebDriver driver) {
         super(driver);
@@ -25,7 +25,6 @@ public class ResultPage extends Page {
     @Override
     public void isLoaded() {
         getTitle();
-        getParagraphText();
     }
 
     public void getParagraphText() {
