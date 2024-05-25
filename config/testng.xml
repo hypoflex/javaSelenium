@@ -10,9 +10,4 @@
             <package name="com.github.hypoflex.javaselenium.tests.negative" />
         </packages>
     </test>
-    <test name="com.github.hypoflex.javaselenium.tests">
-        <packages>
-            <package name="com.github.hypoflex.javaselenium.tests" />
-        </packages>
-    </test>
 </suite>
