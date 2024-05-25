@@ -1,5 +1,6 @@
 package dev.selenium.components;
 
+import dev.selenium.Config;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ public class AlertPage extends Page {
     public static final By defaultAlert = By.xpath("//p/a[@id='alert']");
     public static final By emptyAlert = By.xpath("//p/a[@id='empty-alert']");
     //? NOTE: We could define each prompt, but instead we could also make a dynamic xpath
-    //? See 'genericDivWithId' and 'genericAHrefLink'
+    //? See 'GENERIC_DIV_WITH_ID' and 'GENERIC_A_HREF_LINK_WITH_ID'
     public static final By promptAlert = By.xpath("//p/a[@id='prompt']");
     public static final By promptValueAlert = By.xpath("//p/a[@id='prompt-with-default']");
     public static final By doublePromptAlert = By.xpath("//p/a[@id='double-prompt']"); // not needed?
@@ -26,8 +27,8 @@ public class AlertPage extends Page {
     public static final By textBox = By.xpath("");
 
     //? NOTE: in order to have a dynamic xpath we parse in a parameter to dynamically define the ID
-    public static final String genericDivWithId = "//div[@id='%s']";
-    public static final String genericAHrefLinkWithId = "//p/a[@id='%s']";
+    public static final String GENERIC_DIV_WITH_ID = "//div[@id='%s']";
+    public static final String GENERIC_A_HREF_LINK_WITH_ID = "//p/a[@id='%s']";
 
 
     public AlertPage(WebDriver driver) {
@@ -56,25 +57,25 @@ public class AlertPage extends Page {
     }
 
     public AlertPage clickAHrefWithId(String id) {
-        getLocatedElement(genericAHrefLinkWithId.formatted(id)).click();
+        getLocatedElement(GENERIC_A_HREF_LINK_WITH_ID.formatted(id)).click();
         return this;
     }
 
     public AlertPage assertAlert(String expected) {
         Alert alert = getAlertIsPresent();
         threadSleep(2000); //Give user time to see the message
-        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: '" + expected + "' but received '" + getAlertText(alert) + "'"); //TODO: fix formatting
+        Assert.assertTrue(getAlertText(alert).contains(expected), Config.ALERT_DOES_NOT_CONTAIN_EXPECTED_SUBSTRING.formatted(expected, getAlertText(alert)));
         return this;
     }
 
     public AlertPage assertPromptAlertInputResult(String expected) {
-        var promptText = getLocatedElement(genericDivWithId.formatted("text")).getText();
+        var promptText = getLocatedElement(GENERIC_DIV_WITH_ID.formatted("text")).getText();
         Assert.assertEquals(promptText, expected);
         return this;
     }
 
     public AlertPage assertPromptAlertInputResult(String divId,String expected) {
-        var promptText = getLocatedElement(genericDivWithId.formatted(divId)).getText();
+        var promptText = getLocatedElement(GENERIC_DIV_WITH_ID.formatted(divId)).getText();
         Assert.assertEquals(promptText, expected);
         return this;
     }

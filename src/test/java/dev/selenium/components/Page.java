@@ -2,32 +2,25 @@ package dev.selenium.components;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.time.Duration;
-import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public abstract class Page extends Component {
 
-    public Page(WebDriver driver) {
+    protected Page(WebDriver driver) {
         super(driver);
     }
 
-    protected File driverPath;
-    protected File browserPath;
+    private static final Logger LOGGER = LoggerFactory.getLogger(Page.class);
 
     public abstract void getTitle();
 
     public abstract void isLoaded();
 
-    private static final Random rand = new Random();
 
     // **************** CUSTOM SYSTEM FUNCTIONS **************** //
 
@@ -63,29 +56,6 @@ public abstract class Page extends Component {
         }
     }
 
-    protected File getTempDirectory(String prefix) {
-        File tempDirectory = null;
-        try {
-            tempDirectory = Files.createTempDirectory(prefix).toFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        tempDirectory.deleteOnExit();
-
-        return tempDirectory;
-    }
-
-    protected File getTempFile(String prefix, String suffix) {
-        File logLocation = null;
-        try {
-            logLocation = File.createTempFile(prefix, suffix);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        logLocation.deleteOnExit();
-
-        return logLocation;
-    }
 
     // **************** CUSTOM SYSTEM FUNCTIONS **************** //
 
@@ -106,33 +76,6 @@ public abstract class Page extends Component {
         return String.format("[%d]", index);
     }
 
-    public int randomNumberGenerator(By byXpathObject) {
-        int max = driver.findElements(byXpathObject).size();
-        int min = 1;
-        return rand.nextInt((max - min) + 1) + min;
-    }
-
-    public int randomNumberGenerator(String byXpathString) {
-        int max = driver.findElements(By.xpath(byXpathString)).size();
-        int min = 1;
-        return rand.nextInt((max - min) + 1) + min;
-    }
-
-    public int randomNumberGenerator(int min, By byXpathObject) {
-        int max = driver.findElements(byXpathObject).size();
-        return rand.nextInt((max - min) + 1) + min;
-    }
-
-    public int randomNumberGenerator(int min, String byXpathString) {
-        int max = driver.findElements(By.xpath(byXpathString)).size();
-        return rand.nextInt((max - min) + 1) + min;
-    }
-
-    public static <T> T getRandomFromList(List<T> list) {
-        Random random = new Random();
-        return list.get(random.nextInt(list.size()));
-    }
-
     public static void consoleLog(String logMessage) {
         System.out.println(logMessage);
     }
@@ -145,7 +88,9 @@ public abstract class Page extends Component {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            LOGGER.warn("Thread was interrupted!", e);
+            // Restore interrupted state...
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -164,5 +109,7 @@ public abstract class Page extends Component {
             new Actions(driver).sendKeys(Keys.PAGE_DOWN).perform();
         }
     }
+
+
 
 }

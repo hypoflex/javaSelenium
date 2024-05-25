@@ -1,8 +1,6 @@
 package dev.selenium.components;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class HomePage extends Page {
@@ -19,7 +17,7 @@ public class HomePage extends Page {
 
     @Override
     public void isLoaded() {
-
+        //Coming soon
     }
 
 }

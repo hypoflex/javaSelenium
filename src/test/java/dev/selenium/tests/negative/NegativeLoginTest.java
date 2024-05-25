@@ -5,33 +5,36 @@ import dev.selenium.SetupTest;
 import dev.selenium.components.LoginPage;
 import org.testng.annotations.Test;
 
-import static dev.selenium.components.Page.threadSleep;
-
 public class NegativeLoginTest extends SetupTest {
+
+    LoginPage loginPage;
+    public LoginPage openWebpage() {
+        return openWebpage("login", LoginPage.class);
+    }
 
     @Test
     public void invalidUsernameTest() {
-        LoginPage loginPage = openWebpage("login", LoginPage.class);
-        loginPage.setUsername(Config.invalidUsername);
-        loginPage.setPassword(Config.validPassword);
+        loginPage = openWebpage();
+        loginPage.setUsername(Config.INVALID_USERNAME);
+        loginPage.setPassword(Config.VALID_PASSWORD);
         loginPage.submitForm();
         loginPage.assertAlert("enter valid credentials");
     }
 
     @Test
     public void invalidPasswordTest() {
-        LoginPage loginPage = openWebpage("login", LoginPage.class);
-        loginPage.setUsername(Config.validUsername);
-        loginPage.setPassword(Config.invalidPassword);
+        loginPage = openWebpage();
+        loginPage.setUsername(Config.VALID_USERNAME);
+        loginPage.setPassword(Config.INVALID_PASSWORD);
         loginPage.submitForm();
         loginPage.assertAlert("enter valid credentials");
     }
 
     @Test
     public void invalidCredentialsTest() {
-        LoginPage loginPage = openWebpage("login", LoginPage.class);
-        loginPage.setUsername(Config.invalidUsername);
-        loginPage.setPassword(Config.invalidPassword);
+        loginPage = openWebpage();
+        loginPage.setUsername(Config.INVALID_USERNAME);
+        loginPage.setPassword(Config.INVALID_PASSWORD);
         loginPage.submitForm();
         loginPage.assertAlert("enter valid credentials");
     }

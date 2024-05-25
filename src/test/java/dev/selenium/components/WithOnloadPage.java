@@ -7,7 +7,7 @@ import org.testng.Assert;
 public class WithOnloadPage extends Page {
 
     public static final By paragraph = By.xpath("//p");
-    public static final String paragraphText = "Page with onload event handler";
+    public static final String PARAGRAPH_TEXT = "Page with onload event handler";
 
     public WithOnloadPage(WebDriver driver) {
         super(driver);
@@ -15,11 +15,11 @@ public class WithOnloadPage extends Page {
 
     @Override
     public void getTitle() {
-
+        //There is no title
     }
 
     @Override
     public void isLoaded() {
-        Assert.assertEquals(paragraphText, getLocatedElement(paragraph).getText());
+        Assert.assertEquals(PARAGRAPH_TEXT, getLocatedElement(paragraph).getText());
     }
 }

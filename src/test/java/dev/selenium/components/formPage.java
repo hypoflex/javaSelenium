@@ -1,6 +1,5 @@
 package dev.selenium.components;
 
-import dev.selenium.SetupTest;
 import org.openqa.selenium.WebDriver;
 
 public class formPage extends Page {
@@ -11,11 +10,11 @@ public class formPage extends Page {
 
     @Override
     public void getTitle() {
-
+        //Coming Soon
     }
 
     @Override
     public void isLoaded() {
-
+        //Coming Soon
     }
 }

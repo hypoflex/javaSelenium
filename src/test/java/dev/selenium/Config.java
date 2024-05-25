@@ -8,8 +8,9 @@ public class Config {
         throw new IllegalStateException("Utility class");
     }
 
-    public static final String validUsername = "username";
-    public static final String validPassword = "password";
-    public static final String invalidUsername = "invalidUsername";
-    public static final String invalidPassword = "invalidPassword";
+    public static final String VALID_USERNAME = "username";
+    public static final String VALID_PASSWORD = "password";
+    public static final String INVALID_USERNAME = "invalidUsername";
+    public static final String INVALID_PASSWORD = "invalidPassword";
+    public static final String ALERT_DOES_NOT_CONTAIN_EXPECTED_SUBSTRING = "Alert does not contain the expected substring: '%s' but received '%s'";
 }

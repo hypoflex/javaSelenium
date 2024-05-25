@@ -1,5 +1,6 @@
 package dev.selenium.components;
 
+import dev.selenium.Config;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -42,7 +43,7 @@ public class LoginPage extends Page {
     public void assertAlert(String expected) {
         var alert = getAlertIsPresent();
         threadSleep(2000); //Give time to see the message
-        Assert.assertTrue(getAlertText(alert).contains(expected), "Alert does not contain the expected substring: " + expected); //TODO: Fix formatting
+        Assert.assertTrue(getAlertText(alert).contains(expected), Config.ALERT_DOES_NOT_CONTAIN_EXPECTED_SUBSTRING.formatted(expected, getAlertText(alert)));
         alert.accept();
     }
 
