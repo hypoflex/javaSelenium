@@ -1,21 +1,20 @@
 package com.github.hypoflex.javaselenium.components;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 
 import java.time.Duration;
 import java.util.Set;
 
+@Slf4j
 public abstract class Page extends Component {
+
 
     protected Page(WebDriver driver) {
         super(driver);
     }
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Page.class);
 
     public abstract void getTitle();
 
@@ -76,19 +75,11 @@ public abstract class Page extends Component {
         return String.format("[%d]", index);
     }
 
-    public static void consoleLog(String logMessage) {
-        System.out.println(logMessage);
-    }
-
-    public static void consoleLog(int logMessage) {
-        System.out.println(logMessage);
-    }
-
     public static void threadSleep(int milliseconds) {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
-            LOGGER.warn("Thread was interrupted!", e);
+            log.warn("Thread was interrupted!", e);
             // Restore interrupted state...
             Thread.currentThread().interrupt();
         }

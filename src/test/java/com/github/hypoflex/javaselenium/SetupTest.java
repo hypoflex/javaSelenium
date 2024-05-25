@@ -2,17 +2,16 @@ package com.github.hypoflex.javaselenium;
 
 import com.github.hypoflex.javaselenium.components.Page;
 import com.github.hypoflex.javaselenium.components.exceptions.PageObjectCreationException;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 
+@Slf4j
 public class SetupTest {
 
     protected WebDriver driver;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SetupTest.class);
 
     //? For testing purpose we Start and Stop the driver for each method.
     //? This is done due to the tests being relatively small.
@@ -21,7 +20,7 @@ public class SetupTest {
     public void setupDriver() throws WebDriverException {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         try {
-            LOGGER.info("Starting the driver.");
+            log.info("Starting the driver.");
             driver = new ChromeDriver();
             //driver.manage().window().maximize(); //for testing purpose disabled
         } catch (Exception e) {
@@ -45,7 +44,7 @@ public class SetupTest {
         try {
             if (driver != null) {
                 driver.quit();
-                LOGGER.info("Driver is being quit, browser shutdown.");
+                log.info("Driver is being quit, browser shutdown.");
             }
         } catch (Exception e) {
             throw new WebDriverException("Failed to quit the driver.", e);

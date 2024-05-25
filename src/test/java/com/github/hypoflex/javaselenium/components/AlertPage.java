@@ -1,12 +1,14 @@
 package com.github.hypoflex.javaselenium.components;
 
 import com.github.hypoflex.javaselenium.Config;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+@Slf4j
 public class AlertPage extends Page {
 
     public static final By defaultAlert = By.xpath("//p/a[@id='alert']");
@@ -39,6 +41,7 @@ public class AlertPage extends Page {
     @Override
     public void getTitle() {
         String title = driver.getTitle();
+        log.info("Page title: {}", title);
         Assert.assertEquals(title, "Testing Alerts");
     }
 

@@ -1,9 +1,11 @@
 package com.github.hypoflex.javaselenium.components;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+@Slf4j
 public class ResultPage extends Page {
 
     public static final By paragraphText = By.xpath("//p[@id='greetings'");
@@ -16,6 +18,7 @@ public class ResultPage extends Page {
     @Override
     public void getTitle() {
         String title = driver.getTitle();
+        log.info("Page title: {}", title);
         Assert.assertEquals(title, "We Arrive Here");
     }
 
@@ -26,6 +29,6 @@ public class ResultPage extends Page {
     }
 
     public void getParagraphText() {
-        Assert.assertEquals("Success!", getLocatedElement(paragraphText).getText());
+        Assert.assertEquals(getLocatedElement(paragraphText).getText(), "Success!");
     }
 }

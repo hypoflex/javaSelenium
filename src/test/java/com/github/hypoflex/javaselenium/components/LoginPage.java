@@ -1,10 +1,12 @@
 package com.github.hypoflex.javaselenium.components;
 
 import com.github.hypoflex.javaselenium.Config;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+@Slf4j
 public class LoginPage extends Page {
 
     public static final By loginForm = By.xpath("//form");
@@ -19,6 +21,7 @@ public class LoginPage extends Page {
     @Override
     public void getTitle() {
         String title = driver.getTitle();
+        log.info("Page title: {}", title);
         Assert.assertEquals(title, "Login");
     }
 
@@ -48,7 +51,12 @@ public class LoginPage extends Page {
     }
 
     private Alert getAlertIsPresent() {
-        return driverWait().until(ExpectedConditions.alertIsPresent());
+        try {
+            return driverWait().until(ExpectedConditions.alertIsPresent());
+        } catch (TimeoutException e) {
+            log.error("Alert was not present: {}", e.getMessage());
+            throw e;
+        }
     }
 
     private String getAlertText(Alert alert) {
