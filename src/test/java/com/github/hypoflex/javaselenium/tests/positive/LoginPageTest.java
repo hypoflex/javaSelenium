@@ -13,6 +13,6 @@ public class LoginPageTest extends SetupTest {
         loginPage.setUsername(Config.VALID_USERNAME);
         loginPage.setPassword(Config.VALID_PASSWORD);
         loginPage.submitForm();
-        loginPage.assertAlert("successfully logged in");
+        loginPage.assertAlert(Config.VALID_LOGIN_MESSAGE);
     }
 }

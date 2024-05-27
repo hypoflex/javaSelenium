@@ -18,7 +18,7 @@ public class LoginPageTest extends SetupTest {
         loginPage.setUsername(Config.INVALID_USERNAME);
         loginPage.setPassword(Config.VALID_PASSWORD);
         loginPage.submitForm();
-        loginPage.assertAlert("enter valid credentials");
+        loginPage.assertAlert(Config.INVALID_LOGIN_MESSAGE);
     }
 
     @Test
@@ -27,7 +27,7 @@ public class LoginPageTest extends SetupTest {
         loginPage.setUsername(Config.VALID_USERNAME);
         loginPage.setPassword(Config.INVALID_PASSWORD);
         loginPage.submitForm();
-        loginPage.assertAlert("enter valid credentials");
+        loginPage.assertAlert(Config.INVALID_LOGIN_MESSAGE);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class LoginPageTest extends SetupTest {
         loginPage.setUsername(Config.INVALID_USERNAME);
         loginPage.setPassword(Config.INVALID_PASSWORD);
         loginPage.submitForm();
-        loginPage.assertAlert("enter valid credentials");
+        loginPage.assertAlert(Config.INVALID_LOGIN_MESSAGE);
     }
 
 }

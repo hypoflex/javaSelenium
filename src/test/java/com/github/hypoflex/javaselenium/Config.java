@@ -1,7 +1,6 @@
 package com.github.hypoflex.javaselenium;
 
 import lombok.extern.slf4j.Slf4j;
-import org.testng.Assert;
 
 @Slf4j
 public class Config {
@@ -22,4 +21,6 @@ public class Config {
     public static final String EXAMPLE_TEXT_2 = "Some example text";
     public static final String EXAMPLE_TEXT_3 = "The earth is flat";
     public static final String EXAMPLE_TEXT_4 = "The earth is round";
+    public static final String VALID_LOGIN_MESSAGE = "successfully logged in";
+    public static final String INVALID_LOGIN_MESSAGE = "enter valid credentials";
 }
