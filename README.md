@@ -17,4 +17,13 @@ This project uses Maven for dependency management. To install the project, follo
 To run the tests, execute the following command in the project directory:
 
 ```bash
-mvn test -f pom.xml
+mvn test -f pom.xml 
+```
+
+The `pom.xml` will use the defined `SuiteXML` of **TestNG** found in `/config/testng.xml`
+
+You can however run the suite just with **TestNG** if so desired.
+
+For this we recommend to use IntelliJ.
+- Within IntelliJ create a new run configuration pointing to the suite file found in `/config/testng.xml`.
+- next run the configuration using the play button in the top right.
