@@ -16,13 +16,15 @@ public class DynamicallyModifiedPageTest extends SetupTest {
         return openWebpage("dynamicallyModifiedPage", DynamicallyModifiedPage.class);
     }
 
+    //? declaring variables here is pure for demonstration purpose and should not be done.
     @Test
     public void newElementWithManualWait() {
         dynamicallyModifiedPage = openWebpage();
         Assert.assertEquals(dynamicallyModifiedPage.getOriginalElement(), "element");
         dynamicallyModifiedPage.clickRemoveButton();
-        threadSleep(5000); // give the object some time to disappear
-        log.info("Intentionally waiting for 5 second(s)");
+        var waitTime = 5000;
+        threadSleep(waitTime); // give the object some time to disappear
+        log.info("Intentionally waiting for {} second(s)", waitTime);
         Assert.assertEquals(dynamicallyModifiedPage.getNewElement(), "new element");
     }
 

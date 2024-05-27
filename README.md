@@ -9,7 +9,7 @@ This project is a showcase of the capabilities of Java and Selenium. It is desig
 This project uses Maven for dependency management. To install the project, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/hypoflex/javaSelenium.git`
-2. Navigate to the project directory: `cd your-repo`
+2. Navigate to the project directory: `cd javaSelenium`
 3. Install the dependencies: `mvn install`
 
 ## Usage
